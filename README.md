@@ -1,7 +1,7 @@
 # Python-and-Scrapy
 Scraping Dynamic Site (Populated with JavaScript)
 
-scraping the following sit: 
+We scraping the following sit: 
 https://directory.ntschools.net/#/schools
 
 What is Web Scraping?
@@ -14,5 +14,5 @@ There are other libraries too like BeautifulSoup, for web scraping. However, whe
 Why Learn Scrapy?
 - Most powerful library for scraping
 - Easy to master
--  Cross-platform: doesn't matter which OS you are using
+- Cross-platform: doesn't matter which OS you are using
 - Cloud-ready: Can be run on the cloud with a free account  
