@@ -5,7 +5,7 @@ We scraping the following sit:
 https://directory.ntschools.net/#/schools
 
 What is Web Scraping?
-In a nutshell: Web Scraping = Getting Data from Websites with Code
+Web Scraping = Getting Data from Websites with Code
 
 What is Scrapy?
 Scrapy is a Python library to make web scraping very powerful, fast and efficient.
