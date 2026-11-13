@@ -1,19 +1,47 @@
-# Python-and-Scrapy
-## Scraping Dynamic Site (Populated with JavaScript)
+# NT Schools Directory Scraper — Scrapy
 
-#### We scraping the following sit: 
-https://directory.ntschools.net/#/schools
+Scrapy spider that collects contact details for every school in the [Northern Territory (Australia) schools directory](https://directory.ntschools.net/#/schools) and exports them to CSV.
 
-#### What is Web Scraping?
-Web Scraping : Getting Data from Websites with Code
+## The challenge
 
-#### What is Scrapy?
-Scrapy is a Python library to make web scraping very powerful, fast and efficient.
+The directory is a JavaScript application: the school list is loaded in the browser, so the HTML that a normal scraper downloads has no school data in it.
 
-#### There are other libraries too like BeautifulSoup, for web scraping. However, when it comes to true power and flexibility, Scrapy is the most powerful.
+Instead of rendering the page with a headless browser, the spider calls the same JSON API the website uses:
 
-### Why Learn Scrapy?
-- Most powerful library for scraping
-- Easy to master
-- Cross-platform: doesn't matter which OS you are using
-- Cloud-ready: Can be run on the cloud with a free account  
+1. `GET /api/System/GetAllSchools` returns the list of all schools and their codes
+2. For each school, `GET /api/System/GetSchool?itSchoolCode=<code>` returns its details
+3. The spider extracts the fields below and writes one row per school
+
+This is faster and lighter than browser automation, and the data comes back already structured.
+
+## Output
+
+[`ntschools/NetSchool.csv`](ntschools/NetSchool.csv): 208 schools.
+
+| Field | Description |
+|:--|:--|
+| Name | School name |
+| PhysicalAddress | Street address |
+| PostalAddress | Postal address |
+| Phone | Telephone number |
+| Email | Contact email |
+
+## Usage
+
+```bash
+pip install scrapy
+cd ntschools
+scrapy crawl SchoolsCrawl -O schools.csv
+```
+
+## Tech stack
+
+Python · Scrapy · JSON API requests · CSV export
+
+## Responsible use
+
+`ROBOTSTXT_OBEY` is enabled. The data comes from a public directory; respect the site's terms of use and do not overload it.
+
+## License
+
+Apache 2.0
